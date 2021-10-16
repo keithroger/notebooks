@@ -7,6 +7,9 @@ __pycache__/
 # jupyter
 .ipynb_checkpoints/
 
+# bash helper script
+convert
+
 # todo list
 TODO.md
 
