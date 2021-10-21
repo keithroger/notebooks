@@ -10,9 +10,6 @@ __pycache__/
 # bash helper script
 convert
 
-# todo list
-TODO.md
-
 # virtual environment
 venv/
 .venv/
