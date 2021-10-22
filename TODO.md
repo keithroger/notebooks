@@ -1,8 +1,11 @@
 #TODO
 
+## General
+- add button to run in browser
+- Work on README.md
+
 ## Freedom in the World
 - Add docstrings
-- Add collab button
 - Add comments to make more readable
 - Add markup cells
 
