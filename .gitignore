@@ -1,6 +1,5 @@
 # python compiling
 __pycache__/
-*.py
 *.py[cod]
 *$.py.class
 
