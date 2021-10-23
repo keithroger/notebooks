@@ -6,6 +6,9 @@ __pycache__/
 # jupyter
 .ipynb_checkpoints/
 
+# datasets
+creditcard.csv
+
 # bash helper script
 convert
 
