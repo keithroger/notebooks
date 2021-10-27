@@ -3,7 +3,8 @@
 # Credit Card Fraud Detection
 
 The data used for this notebooks has already had principle component analysis
-(PCA) applied for confidentiality.
+(PCA) applied for confidentiality. A neural network is trained to
+identify credit card fraud.
 
 Dataset available at https://www.kaggle.com/mlg-ulb/creditcardfraud
 '''
@@ -38,6 +39,7 @@ df.info()
 fraud_percent = np.sum(df['Class']) / len(df['Class'])
 
 # %%
+# plot the amound of fraud vs non-fraud cases
 fig, ax = plt.subplots()
 ax.pie([1.0 - fraud_percent, fraud_percent],
        labels=['Non-Fraud', 'Fraud'],
@@ -48,6 +50,7 @@ plt.title('Fraud vs Non-Fraud')
 plt.savefig('images/pie.png')
 
 # %%
+# split test and training data
 X = df.drop(columns='Class')
 y = df['Class']
 X_train, X_test, y_train, y_test = train_test_split(
@@ -57,6 +60,7 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 # %%
+# create neural network
 lr = 2e-3
 model = Sequential([
     Dense(10, input_dim=30),
@@ -72,10 +76,10 @@ model = Sequential([
 model.compile(loss='binary_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
-# plot_model(model, to_file='images/model_plot.png', show_shapes=True)
 
 # %%
-epochs=20
+# train neural network
+epochs = 20
 history = model.fit(X_train, y_train, epochs=epochs, validation_split=0.2)
 fig, ax = plt.subplots()
 ax.plot(range(1, epochs+1), history.history['val_loss'], label='val_loss')
