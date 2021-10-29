@@ -8,6 +8,8 @@ __pycache__/
 
 # datasets
 creditcard.csv
+# remove datasets to free up space
+data/
 
 # bash helper script
 convert
