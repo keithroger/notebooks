@@ -9,8 +9,11 @@
 - Use AUPRC
 - Use a diagonal corr plot
 
+## ML Model Comparison
+- Use Kfold statified sampling
+- Measure error, accuracy, time, etc for each model
+
 ## Notebook Ideas
-- https://archive.ics.uci.edu/ml/datasets/eeg+database
 - eye blink data predition
 - eeg epiepsy classification
 - Opiod deaths with CDC data
