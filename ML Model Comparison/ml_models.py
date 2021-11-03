@@ -12,11 +12,18 @@ Data set availible from https://archive.ics.uci.edu/ml/datasets/Mushroom
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import sklearn.model_selection
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.model_selection import train_test_split
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, LeakyReLU, Dropout
+
 
 # %%
 '''
 ## Column Information
 '''
+
 
 # %%
 ''''
@@ -36,13 +43,84 @@ import matplotlib.pyplot as plt
 |   |  |  |  |  |  |  |  |  |yellow=y |  |  |  |  |  |  |  |  |  |  |  |  |  |
 '''
 
+
+# %%
+'''
+## Loads mushroom dataset and names columns
+'''
+
+
 # %%
 column_names = [
-        'class', 'cap-shape', 'cap-surface', 'cap-color', 'bruises?', 'oder',
-        'gill-attatchment', 'gill-spacing', 'gill-size', 'gill-color',
-        'stalk-shape', 'stalk-root', 'stalk-surface-above-ring',
-        'stalk-surface-below-ring','stalk-color-above-ring',
-        'stalk-color-below-ring', 'veil-type', 'veil-color', 'ring-number',
-        'ring-type', 'spore-print-color', 'population', 'habitat']
+        'class', 'cap-shape', 'cap-surface', 'cap-color', 'bruises?',
+        'oder', 'gill-attatchment', 'gill-spacing', 'gill-size',
+        'gill-color', 'stalk-shape', 'stalk-root',
+        'stalk-surface-above-ring', 'stalk-surface-below-ring',
+        'stalk-color-above-ring', 'stalk-color-below-ring', 'veil-type',
+        'veil-color', 'ring-number', 'ring-type', 'spore-print-color',
+        'population', 'habitat']
 df = pd.read_csv('data/agaricus-lepiota.data', names=column_names)
 
+
+# %%
+'''
+## Splits train and test set
+'''
+
+
+# %%
+X = df.iloc[:, 1:]
+y = df.iloc[:, 0]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+
+# %%
+'''
+## Encode categorical data
+Use OneHotEncoder for X and use LabelEncoder for y
+'''
+
+
+ohe = OneHotEncoder()
+ohe.fit(X_train)
+X_train_enc = ohe.transform(X_train)
+X_test_enc = ohe.transform(X_test)
+le = LabelEncoder()
+le.fit(y_train)
+y_train_enc = le.transform(y_train)
+y_test_enc = le.transform(y_test)
+
+
+# %%
+'''
+## Create a nueral network model
+'''
+
+# %%
+lr = 2e-3
+model = Sequential([
+    Dense(10, input_dim=X_train_enc.shape[1]),
+    LeakyReLU(alpha=lr),
+    Dropout(0.2),
+    Dense(10),
+    LeakyReLU(alpha=lr),
+    Dense(10),
+    LeakyReLU(alpha=lr),
+    Dense(1, activation='sigmoid')
+    ])
+model.compile(
+        loss='binary_crossentropy',
+        optimizer='adam',
+        metrics=['accuracy'])
+
+
+# %%
+'''
+Train neural network model
+'''
+
+
+# %%
+model.fit(X_train_enc, y_train_enc, epochs=5)
+loss, acc = model.evaluate(X_test_enc, y_test_enc)
+print('Model Test Accuracy: ', acc)
