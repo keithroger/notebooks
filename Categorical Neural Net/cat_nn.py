@@ -2,8 +2,7 @@
 '''
 # Machine Learning Model Comparison
 
-This notebook will work on a mushroom data set to view how different machine
-learning models perform with categorical data.
+This notebook will work on a mushroom data set and apply a neural network.
 
 Data set availible from https://archive.ics.uci.edu/ml/datasets/Mushroom
 '''
