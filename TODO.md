@@ -1,8 +1,9 @@
 #TODO
 
 ## General
-- add button to run in browser
+- Add button to run in browser
 - Work on README.md
+- Create discriptions for README.md
 
 ## Fraud Detection
 - Compare different machine learning models
@@ -17,7 +18,6 @@
 - eye blink data predition
 - eeg epiepsy classification
 - Opiod deaths with CDC data
-- Education vs Relgion vs Political Preference
-- Religion dataset
+- Education, Relgion, Political Preference
 - Machine learning prediction
 - Create a neural network from scratch
