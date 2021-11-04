@@ -15,7 +15,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LeakyReLU, Dropout
-from tensorflow.keras.utils import plot_model
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
@@ -49,12 +48,13 @@ ax.pie([1.0 - fraud_percent, fraud_percent],
 plt.title('Fraud vs Non-Fraud')
 plt.savefig('images/pie.png')
 
+
 # %%
 # split test and training data
 X = df.drop(columns='Class')
 y = df['Class']
 X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.33, random_state=1984)
+        X, y, test_size=0.33)
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
