@@ -8,11 +8,10 @@ learning models perform with categorical data.
 Data set availible from https://archive.ics.uci.edu/ml/datasets/Mushroom
 '''
 
+
 # %%
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import sklearn.model_selection
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Sequential
@@ -121,6 +120,18 @@ Train neural network model
 
 
 # %%
-model.fit(X_train_enc, y_train_enc, epochs=5)
+epochs = 5
+history = model.fit(
+        X_train_enc,
+        y_train_enc,
+        epochs=epochs,
+        validation_data=(X_test_enc, y_test_enc))
+fig, ax = plt.subplots()
+ax.plot(range(1, epochs+1), history.history['val_loss'], label='val_loss')
+ax.plot(range(1, epochs+1), history.history['loss'], label='loss')
+plt.xlabel('epochs')
+plt.ylabel('loss')
+plt.legend(loc='upper right')
+plt.savefig('images/loss.png')
 loss, acc = model.evaluate(X_test_enc, y_test_enc)
 print('Model Test Accuracy: ', acc)
