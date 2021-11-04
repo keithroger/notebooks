@@ -80,14 +80,15 @@ Use OneHotEncoder for X and use LabelEncoder for y
 '''
 
 
+# %%
 ohe = OneHotEncoder()
 ohe.fit(X_train)
-X_train_enc = ohe.transform(X_train)
-X_test_enc = ohe.transform(X_test)
+X_train_encoded = ohe.transform(X_train)
+X_test_encoded = ohe.transform(X_test)
 le = LabelEncoder()
 le.fit(y_train)
-y_train_enc = le.transform(y_train)
-y_test_enc = le.transform(y_test)
+y_train_encoded = le.transform(y_train)
+y_test_encoded = le.transform(y_test)
 
 
 # %%
@@ -98,7 +99,7 @@ y_test_enc = le.transform(y_test)
 # %%
 lr = 2e-3
 model = Sequential([
-    Dense(10, input_dim=X_train_enc.shape[1]),
+    Dense(10, input_dim=X_train_encoded.shape[1]),
     LeakyReLU(alpha=lr),
     Dropout(0.2),
     Dense(10),
@@ -115,17 +116,17 @@ model.compile(
 
 # %%
 '''
-Train neural network model
+## Train neural network model
 '''
 
 
 # %%
 epochs = 5
 history = model.fit(
-        X_train_enc,
-        y_train_enc,
+        X_train_encoded,
+        y_train_encoded,
         epochs=epochs,
-        validation_data=(X_test_enc, y_test_enc))
+        validation_data=(X_test_encoded, y_test_encoded))
 fig, ax = plt.subplots()
 ax.plot(range(1, epochs+1), history.history['val_loss'], label='val_loss')
 ax.plot(range(1, epochs+1), history.history['loss'], label='loss')
@@ -133,5 +134,5 @@ plt.xlabel('epochs')
 plt.ylabel('loss')
 plt.legend(loc='upper right')
 plt.savefig('images/loss.png')
-loss, acc = model.evaluate(X_test_enc, y_test_enc)
+loss, acc = model.evaluate(X_test_encoded, y_test_encoded)
 print('Model Test Accuracy: ', acc)
