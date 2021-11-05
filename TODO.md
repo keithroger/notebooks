@@ -2,7 +2,6 @@
 
 ## General
 - Add button to run in browser
-- Work on README.md
 - Create discriptions for README.md
 
 ## Fraud Detection
