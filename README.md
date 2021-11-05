@@ -7,7 +7,7 @@ report of PR and CL scores.
 
 Dataset available at https://freedomhouse.org/reports/freedom-world/freedom-world-research-methodology
 
-[Notebook](Freedom\ in\ the\ World\ 2013-2021/fitw.ipynb)
+[Notebook](<Freedom in the World 2013-2021/fitw.ipynb>)
 
 ## Credit Card Fraud Detection
 A neural network is used to predict fraudulent credit card activity. This
@@ -15,7 +15,7 @@ notebook uses credit card data that has already been anonymized.
 
 Dataset available at https://www.kaggle.com/mlg-ulb/creditcardfraud
 
-[Notebook](Fraud\ Detection/fraud_detection.ipynb)
+[Notebook](<Fraud Detection/fraud_detection.ipynb>)
 
 ## Categorial Neural Network
 Converts a categorical dataset to using one hot encoding and applies a
@@ -24,4 +24,4 @@ about mushrooms that are classified as either edible or poisonous.
 
 Data set availible at https://archive.ics.uci.edu/ml/datasets/Mushroom
 
-[Notebook](Categorical\ Neural\ Net/cat_nn.ipynb)
+[Notebook](<Categorical Neural Net/cat_nn.ipynb>)
