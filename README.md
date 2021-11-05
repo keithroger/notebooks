@@ -24,4 +24,4 @@ about mushrooms that are classified as either edible or poisonous.
 
 Data set availible at https://archive.ics.uci.edu/ml/datasets/Mushroom
 
-[Notebook](<Categorical Neural Net/cat_nn.ipynb>)
+## [Notebook](<Categorical Neural Net/cat_nn.ipynb>)
